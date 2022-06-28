@@ -30,10 +30,6 @@ main {
   overflow: hidden;
 }
 
-main > * {
-  flex: 1 0 100%;
-}
-
 .instructions {
   width: 30ch;
   text-align: center;
