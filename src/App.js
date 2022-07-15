@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Die from "./Die";
 import Confetti from "react-confetti";
 import { nanoid } from "nanoid";
 
 export default function App() {
-  const [dice, setDice] = React.useState(() => initDice());
+  const [dice, setDice] = useState(() => initDice());
 
-  const [isGameWon, setIsGameWon] = React.useState(false);
+  const [isGameWon, setIsGameWon] = useState(false);
 
-  const [rerollCounter, setRerollCounter] = React.useState(0);
+  const [rerollCounter, setRerollCounter] = useState(0);
 
   React.useEffect(() => {
     if (gameEndCheck()) {
       setIsGameWon(true);
     }
   }, [dice]);
-
+  console.log("render app");
   function initDice() {
     let newArray = [];
     for (let i = 0; i < 10; i++) {
@@ -25,7 +25,6 @@ export default function App() {
         isPressed: false,
       };
     }
-    if (isGameWon) setIsGameWon(false);
     return newArray;
   }
 
@@ -34,6 +33,7 @@ export default function App() {
     if (isGameWon) {
       setDice(initDice());
       setIsGameWon(false);
+      setRerollCounter(0);
       return;
     }
 
